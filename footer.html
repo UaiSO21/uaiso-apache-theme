@@ -6,7 +6,7 @@
         "[IMG]": "far fa-file-image",
         "[TXT]": "fas fa-file-alt",
         "[DIR]": "fas fa-folder",
-        "[PARENTDIR]": "fas fa-level-up",
+        "PARENTDIR": "fas fa-level-up-alt",
         "DISC": "fas fa-compact-disc",
         "COMPACT": "far fa-file-archive",
         "SIGN": "fas fa-file-signature",
@@ -22,6 +22,7 @@
             case "md5": return "[TXT]"
             case "zip":
             case "zst": return "COMPACT"
+            case "parent directory": return "PARENTDIR"
             default: return "desconhecido"
         }
     }
@@ -29,13 +30,11 @@
     document.querySelectorAll(`img[alt]`).forEach(img => {
         if(img!=undefined)
             if(img.alt != undefined && img.alt != "") {
-                console.log(img)
-                console.log(img.alt)
                 if(!(img.alt in tabela_alt)){
                     let td_Nome = img.parentElement.nextElementSibling
                     let tagClick = td_Nome?.firstChild
                     if(tagClick?.tagName?.toLowerCase() == "a"){
-                        img.alt = extensaoToAlt(tagClick.href)
+                        img.alt = extensaoToAlt(tagClick.innerHTML)
                     } else img.alt="desconhecido"
                 }
                 let i = document.createElement('i')
