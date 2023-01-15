@@ -3,10 +3,7 @@
 <p>&copy; 2023, <a href='https://uai21.com/'>UAI21 Soluções</a>.</p>
 <script>
     let tabela = {
-        "[ICO]": "far fa-file-image",
-        "[JPG]": "far fa-file-image",
-        "[PNG]": "far fa-file-image",
-//        "[IMG]": "",
+        "[IMG]": "far fa-file-image",
         "[TXT]": "fas fa-file-alt",
         "[DIR]": "fas fa-folder",
         "desconhecido":"far fa-file"
@@ -16,7 +13,7 @@
             if(img.alt != undefined && img.alt != "") {
 
                 if(!(img.alt in tabela)){
-                    img.alt="desconhecido"
+                    // img.alt="desconhecido"
                 }
                 let i = document.createElement('i')
                 i.className = `${tabela[img.alt]} fa-lg`
