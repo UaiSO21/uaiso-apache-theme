@@ -2,24 +2,43 @@
 <br/>
 <p>&copy; 2023, <a href='https://uai21.com/'>UAI21 Soluções</a>.</p>
 <script>
-    let tabela = {
-        "[ICO]": "far fa-file-image",
-        "[JPG]": "far fa-file-image",
-        "[PNG]": "far fa-file-image",
-//        "[IMG]": "",
+    let tabela_alt = {
+        "[IMG]": "far fa-file-image",
         "[TXT]": "fas fa-file-alt",
         "[DIR]": "fas fa-folder",
+        "PARENTDIR": "fas fa-level-up-alt",
+        "DISC": "fas fa-compact-disc",
+        "COMPACT": "far fa-file-archive",
+        "SIGN": "fas fa-file-signature",
         "desconhecido":"far fa-file"
     }
+
+    function extensaoToAlt(nome){
+        const s = nome?.split(".")
+        const ext = s[s.length-1]?.toLowerCase()
+        switch(ext){
+            case "iso": return "DISC"
+            case "sig": return "SIGN"
+            case "md5": return "[TXT]"
+            case "zip":
+            case "zst": return "COMPACT"
+            case "parent directory": return "PARENTDIR"
+            default: return "desconhecido"
+        }
+    }
+    
     document.querySelectorAll(`img[alt]`).forEach(img => {
         if(img!=undefined)
             if(img.alt != undefined && img.alt != "") {
-
-                if(!(img.alt in tabela)){
-                    img.alt="desconhecido"
+                if(!(img.alt in tabela_alt)){
+                    let td_Nome = img.parentElement.nextElementSibling
+                    let tagClick = td_Nome?.firstChild
+                    if(tagClick?.tagName?.toLowerCase() == "a"){
+                        img.alt = extensaoToAlt(tagClick.innerHTML)
+                    } else img.alt="desconhecido"
                 }
                 let i = document.createElement('i')
-                i.className = `${tabela[img.alt]} fa-lg`
+                i.className = `${tabela_alt[img.alt]} fa-lg`
                 img.parentElement.appendChild(i)
             }
     })
