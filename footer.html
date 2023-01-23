@@ -1,7 +1,30 @@
 </div>
 <br/>
-<p>&copy; 2023, <a href='https://uai21.com/'>UAI21 Soluções</a>.</p>
+<p>&copy; 2023, <a href='https://uai21.com/'>UAI21 Solu&#231;&#245;es</a>.</p>
 <script>
+
+    // PATH:
+    let paths = (window.location.pathname || "/").split('/').slice(1,-1)
+    if (paths.length > 0){
+        document.querySelector(`#breadcrumbmain`).innerHTML=`<a href='/'>UAISO</a>`
+
+        let cpath = '/'
+        paths.forEach((path, idx)=>{
+            let li = document.createElement('li')
+            if (idx < paths.length-1){
+                let ahref = document.createElement('a')
+                cpath += `${path}/`
+                ahref.href = cpath
+                ahref.innerText=path
+                li.appendChild(ahref)
+            } else {
+                li.innerText = path
+            }
+            document.querySelector(`ul.breadcrumb`).appendChild(li)
+        })
+    }
+
+    // ÍCONES
     let tabela_alt = {
         "[IMG]": "far fa-file-image",
         "[TXT]": "fas fa-file-alt",
@@ -42,6 +65,7 @@
                 img.parentElement.appendChild(i)
             }
     })
+
 </script>
 </body>
 </html>

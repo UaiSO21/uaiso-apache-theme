@@ -3,7 +3,8 @@
 		<title>UAISO - Pacotes de Desenvolvimento</title>
 		<!-- MOBILE DEVICE SUPPORT -->
 		<meta name="viewport" content="width=device-width,initial-scale=1">
-		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+		<meta charset="ISO-8859-1" />
 		<link href="/assets/fa/css/fontawesome.css" rel="stylesheet">
 		<link href="/assets/fa/css/all.css" rel="stylesheet">
 		<!-- INLINE STYLE (NO MESS OF HIDING ADDITIONAL FILES IN .htaccess) -->
@@ -119,15 +120,50 @@
 				font-size: 0.9em;
 			}
 		}
+
+
+
+		/* BREADCRUMBS FROM WEB */
+		/* Style the list */
+		ul.breadcrumb {
+		padding: 10px 16px;
+		list-style: none;
+		background-color: #eee;
+		}
+
+		/* Display list items side by side */
+		ul.breadcrumb li {
+		display: inline;
+		font-size: 18px;
+		}
+
+		/* Add a slash symbol (/) before/behind each list item */
+		ul.breadcrumb li+li:before {
+		padding: 8px;
+		color: black;
+		content: "/\00a0";
+		}
+
+		/* Add a color to all links inside the list */
+		ul.breadcrumb li a {
+		color: #0275d8;
+		text-decoration: none;
+		}
+
+		/* Add a color on mouse-over */
+		ul.breadcrumb li a:hover {
+		color: #01447e;
+		text-decoration: underline;
+		}
 		/******************************
 		INLINE STYLES END HERE
 		*****************************/
 		</style>
 	</head>
 	<body>
-		<h1>UAISO - Pacotes de Desenvolvimento</h1>
-		<p>
-			
-		</p><br/>
+		<ul class="breadcrumb">
+			<li><b id="breadcrumbmain" style="font-size: 1.2em;">UAISO</b></li>
+		</ul>
+		<br/>
 		<!-- IF YOU WANT TO STYLE GENERATED CONTENT, USE DIV #generated -->
 		<div id="generated">
